@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hariom Vishwakarma | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#home" class="active" title="Home"><i class="fas fa-home"></i></a>
+            <a href="#about" title="About"><i class="fas fa-smile"></i></a>
+            <a href="#skills" title="Skills"><i class="fas fa-star"></i></a>
+            <a href="#experience" title="Experience"><i class="fas fa-briefcase"></i></a>
+            <a href="#projects" title="Projects"><i class="fas fa-tv"></i></a>
+        </nav>
+        <div class="sidebar-bottom">
+            <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+        </div>
+    </aside>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="topbar-right">
+            <div class="social-icons">
+                <a href="https://github.com/Ommii98" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/HariomVish03" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="profile-mini">
+                <img src="assets/myphoto.jpeg" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Hero Section -->
+        <section id="home" class="section hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <div class="badge">
+                        <span class="dot"></span> Hello, I am
+                    </div>
+                    <h1>Hariom <span class="highlight">Vishwakarma</span></h1>
+                    <h2>Full Stack Developer</h2>
+                    <p>Final-year B.Tech student specializing in end-to-end web application development. I build scalable, user-friendly applications using Angular, React, and Node.js.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="image-bg-shape"></div>
+                    <img src="assets/myphoto.jpeg" alt="Hariom Vishwakarma" class="hero-image">
+                    <div class="floating-icon icon-1"><i class="fab fa-react"></i></div>
+                    <div class="floating-icon icon-2"><i class="fab fa-angular"></i></div>
+                    <div class="floating-icon icon-3"><i class="fab fa-node-js"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Education Section -->
+        <section id="about" class="section about">
+            <div class="section-header">
+                <h2>About <span class="highlight">Me</span></h2>
+                <p>My professional summary and educational background.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="card about-card">
+                    <h3>Professional Summary</h3>
+                    <p>I am a final-year B.Tech student specializing in end-to-end web application development. I excel at building scalable, user-friendly applications with expertise in frontend frameworks, backend integration, and RESTful APIs.</p>
+                    <ul class="personal-details">
+                        <li><i class="fas fa-map-marker-alt"></i> Jaunpur, Uttar Pradesh</li>
+                        <li><i class="fas fa-language"></i> English, Hindi</li>
+                        <li><i class="fas fa-heart"></i> Agentic coding, JavaScript libraries</li>
+                    </ul>
+                </div>
+
+                <div class="card education-card">
+                    <img src="assets/college.png" alt="IIIT Manipur Campus" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h3>Education</h3>
+                    <div class="edu-item">
+                        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="edu-details">
+                            <h4>B-Tech in Electronics & Communication</h4>
+                            <h5>IIIT Manipur</h5>
+                            <span class="year">2022 – 2026</span>
+                        </div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-icon"><i class="fas fa-school"></i></div>
+                        <div class="edu-details">
+                            <h4>Intermediate (12th) - First Division</h4>
+                            <h5>BNSD Inter College, Kanpur</h5>
+                            <span class="year">2021</span>
+                        </div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-icon"><i class="fas fa-book"></i></div>
+                        <div class="edu-details">
+                            <h4>High School (10th) - Distinction</h4>
+                            <h5>St. John Inter College, Kanpur</h5>
+                            <span class="year">2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Wave decoration for cards will be added via CSS -->
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills">
+            <div class="section-header">
+                <h2>Technical <span class="highlight">Skills</span></h2>
+                <p>Technologies and tools I work with.</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="card skill-card">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Languages</h3>
+                    <div class="tags">
+                        <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Python</span><span>SQL</span>
+                    </div>
+                </div>
+                <div class="card skill-card">
+                    <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Frontend</h3>
+                    <div class="tags">
+                        <span>Angular</span><span>React</span>
+                    </div>
+                </div>
+                <div class="card skill-card">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <h3>Backend</h3>
+                    <div class="tags">
+                        <span>Node.js</span><span>Express.js</span><span>REST APIs</span>
+                    </div>
+                </div>
+                <div class="card skill-card">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3>Databases & Tools</h3>
+                    <div class="tags">
+                        <span>MongoDB</span><span>MySQL</span><span>Git</span><span>Postman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section (Vertical Timeline) -->
+        <section id="experience" class="section experience">
+            <div class="section-header">
+                <h2>Professional <span class="highlight">Experience</span></h2>
+                <p>My journey and work history.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="card timeline-card">
+                        <img src="assets/coding.png" alt="Coding Workspace" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
+                        <h3>Full Stack Developer</h3>
+                        <h4>Independent Projects & Open Source</h4>
+                        <ul class="exp-list">
+                            <li>Architected and developed comprehensive full-stack solutions, including a fully-featured E-commerce platform and a Hospital Services management system.</li>
+                            <li>Implemented robust, secure user authentication workflows and scalable backend APIs using Node.js and MongoDB.</li>
+                            <li>Designed interactive data analysis applications such as a Sales Dashboard and Heart Attack Rate Analysis tool using modern JavaScript frameworks.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="card timeline-card">
+                        <h3>Achievements & Certifications</h3>
+                        <h4>Continuous Learning</h4>
+                        <ul class="exp-list">
+                            <li>Completed advanced courses in Web Development, Angular, and MEAN Stack.</li>
+                            <li>Contributor to open-source projects on GitHub.</li>
+                            <li>Actively participated in workshops on emerging web technologies.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Mac OS Windows) -->
+        <section id="projects" class="section projects">
+            <div class="section-header">
+                <h2>Key <span class="highlight">Projects</span></h2>
+                <p>Some of the things I've built.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="mac-window card">
+                    <div class="mac-header">
+                        <div class="mac-buttons">
+                            <span class="mac-close"></span>
+                            <span class="mac-min"></span>
+                            <span class="mac-max"></span>
+                        </div>
+                        <div class="mac-title">Appointment Booking System</div>
+                    </div>
+                    <div class="mac-content">
+                        <img src="assets/myphoto3.jpeg" alt="Appointment Booking System" class="project-img">
+                        <div class="project-info">
+                            <h3>Full Stack Appointment Booking System (2024)</h3>
+                            <p>Developed a system for doctors and hospitals with triple authentication (Patient, Doctor, Admin). Features included appointment management and specialized dashboards.</p>
+                            <div class="tags">
+                                <span>React</span><span>Node.js</span><span>MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Ommii98/Hospital_services" target="_blank" class="btn btn-sm btn-primary">Visit Site</a>
+                                <a href="https://github.com/Ommii98/Hospital_services" target="_blank" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="mac-window card">
+                    <div class="mac-header">
+                        <div class="mac-buttons">
+                            <span class="mac-close"></span>
+                            <span class="mac-min"></span>
+                            <span class="mac-max"></span>
+                        </div>
+                        <div class="mac-title">E-Commerce Platform</div>
+                    </div>
+                    <div class="mac-content">
+                        <img src="assets/myphoto4.jpeg" alt="MEAN Stack E-Commerce Platform" class="project-img">
+                        <div class="project-info">
+                            <h3>MEAN Stack E-Commerce Platform (2024)</h3>
+                            <p>Built a feature-rich platform using MongoDB, Express, Angular, and Node.js. Integrated JWT authentication, payment gateways, and a responsive UI.</p>
+                            <div class="tags">
+                                <span>Angular</span><span>Express</span><span>Node.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Ommii98/E-commerce-Forever" target="_blank" class="btn btn-sm btn-primary">Visit Site</a>
+                                <a href="https://github.com/Ommii98/E-commerce-Forever" target="_blank" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="section-header">
+                <h2>Get In <span class="highlight">Touch</span></h2>
+                <p>Feel free to reach out for collaborations or just a friendly hello!</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Form Card -->
+                <div class="card form-card">
+                    <h3>Send a Message</h3>
+                    <form action="mailto:hariom.vishwakarma@example.com" method="post" enctype="text/plain" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+                <!-- Info Card -->
+                <div class="card info-card">
+                    <h3>Contact Information</h3>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-text">
+                                <h4>Location</h4>
+                                <p>Jaunpur, Uttar Pradesh</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-language"></i></div>
+                            <div class="info-text">
+                                <h4>Languages</h4>
+                                <p>English, Hindi</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-heart"></i></div>
+                            <div class="info-text">
+                                <h4>Interests</h4>
+                                <p>Agentic coding, efficient programming solutions, exploring new JavaScript libraries.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links-large mt-4">
+                        <a href="https://github.com/Ommii98" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/HariomVish03" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:hello@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simple Footer -->
+        <footer class="footer-simple">
+            <p class="copyright">&copy; 2026 Hariom Vishwakarma. Built with HTML, CSS, and JS.</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
