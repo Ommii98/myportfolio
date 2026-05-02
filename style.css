@@ -1202,19 +1202,27 @@ ul {
     .topbar {
         left: 0;
         width: 100%;
-        padding: 0 16px;
+        padding: 0 12px;
         justify-content: space-between;
         overflow: hidden;
     }
 
-    /* Force hide social icons in topbar on mobile */
-    .topbar .social-icons,
+    /* Show social icons on mobile but compact */
+    .topbar .social-icons {
+        display: flex !important;
+        gap: 4px;
+    }
+
     .topbar .social-icons a {
-        display: none !important;
+        display: inline-flex !important;
+        width: 28px !important;
+        height: 28px !important;
+        margin-left: 0 !important;
+        font-size: 0.78rem !important;
     }
 
     .topbar-right {
-        gap: 8px;
+        gap: 6px;
         flex-shrink: 0;
     }
 
