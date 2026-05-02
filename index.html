@@ -278,20 +278,20 @@
                 <!-- Form Card -->
                 <div class="card form-card">
                     <h3>Send a Message</h3>
-                    <form action="mailto:hariom.vishwakarma@example.com" method="post" enctype="text/plain" class="contact-form">
+                    <form id="contact-form" action="https://formspree.io/f/hariomvishwakarma8076@gmail.com" method="POST" class="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="_replyto" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane"></i></button>
+                        <button type="submit" id="submit-btn" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
 
@@ -326,7 +326,7 @@
                         <a href="https://github.com/Ommii98" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://x.com/HariomVish03" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="mailto:hello@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:hariomvishwakarma8076@gmail.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -338,6 +338,12 @@
         </footer>
 
     </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span id="toast-msg">Message sent!</span>
+    </div>
 
     <!-- Mobile Search Overlay -->
     <div class="mobile-search-overlay" id="mobile-search-overlay">

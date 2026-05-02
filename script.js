@@ -148,8 +148,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =============================================
+    // Contact Form — AJAX via Formspree
+    // =============================================
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn   = document.getElementById('submit-btn');
+    const toast       = document.getElementById('toast');
+    const toastMsg    = document.getElementById('toast-msg');
+    const toastIcon   = toast ? toast.querySelector('.toast-icon') : null;
+
+    function showToast(message, type = 'success') {
+        if (!toast) return;
+        toastMsg.textContent = message;
+        toast.className = `toast ${type} show`;
+        if (toastIcon) {
+            toastIcon.className = type === 'success'
+                ? 'toast-icon fas fa-check-circle'
+                : 'toast-icon fas fa-exclamation-circle';
+        }
+        setTimeout(() => { toast.classList.remove('show'); }, 4000);
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            const data = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    showToast('✅ Message sent! I\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    const json = await response.json();
+                    const errMsg = json.errors ? json.errors.map(e => e.message).join(', ') : 'Something went wrong.';
+                    showToast(errMsg, 'error');
+                }
+            } catch {
+                showToast('Network error. Please try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+            }
+        });
+    }
+
+    // =============================================
     // Active Navigation Link Highlighting
     // =============================================
+
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('.sidebar-nav a');
 
