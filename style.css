@@ -1204,11 +1204,13 @@ ul {
         width: 100%;
         padding: 0 16px;
         justify-content: space-between;
+        overflow: hidden;
     }
 
-    /* Hide social icons in topbar on mobile — they live in the Contact section */
-    .topbar .social-icons {
-        display: none;
+    /* Force hide social icons in topbar on mobile */
+    .topbar .social-icons,
+    .topbar .social-icons a {
+        display: none !important;
     }
 
     .topbar-right {
