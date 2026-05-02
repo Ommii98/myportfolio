@@ -1186,9 +1186,26 @@ ul {
     .topbar {
         left: 0;
         width: 100%;
-        padding: 0 20px;
+        padding: 0 16px;
+        justify-content: space-between;
     }
-    
+
+    /* Hide social icons in topbar on mobile — they live in the Contact section */
+    .topbar .social-icons {
+        display: none;
+    }
+
+    .topbar-right {
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .profile-mini {
+        width: 36px;
+        height: 36px;
+    }
+
+
     .main-content {
         margin-left: 0;
         margin-bottom: 70px;
