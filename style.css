@@ -1103,7 +1103,23 @@ ul {
 .toast.error   { background: #ef4444; }
 .toast.error .toast-icon { color: white; }
 
+/* Direct email fallback note */
+.direct-email-note {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.direct-email-note a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .footer-simple {
+
 
     text-align: center;
     padding: 30px 0;

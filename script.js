@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =============================================
-    // Contact Form — AJAX via Formspree
+    // Contact Form — mailto handler
     // =============================================
     const contactForm = document.getElementById('contact-form');
     const submitBtn   = document.getElementById('submit-btn');
@@ -165,40 +165,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? 'toast-icon fas fa-check-circle'
                 : 'toast-icon fas fa-exclamation-circle';
         }
-        setTimeout(() => { toast.classList.remove('show'); }, 4000);
+        setTimeout(() => { toast.classList.remove('show'); }, 4500);
     }
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            const name    = document.getElementById('name').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-            const data = new FormData(contactForm);
+            const subject = encodeURIComponent(`Portfolio Message from ${name}`);
+            const body    = encodeURIComponent(
+                `Hi Hariom,\n\nYou have a new message from your portfolio:\n\n` +
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n` +
+                `--- Sent from hariomvishwakarma portfolio ---`
+            );
 
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
+            window.location.href =
+                `mailto:hariomvishwakarma8076@gmail.com?subject=${subject}&body=${body}`;
 
-                if (response.ok) {
-                    showToast('✅ Message sent! I\'ll get back to you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    const json = await response.json();
-                    const errMsg = json.errors ? json.errors.map(e => e.message).join(', ') : 'Something went wrong.';
-                    showToast(errMsg, 'error');
-                }
-            } catch {
-                showToast('Network error. Please try again.', 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-            }
+            showToast('Opening your email client... 📬', 'success');
+            contactForm.reset();
         });
     }
 
