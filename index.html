@@ -20,6 +20,7 @@
             <a href="#skills" title="Skills"><i class="fas fa-star"></i></a>
             <a href="#experience" title="Experience"><i class="fas fa-briefcase"></i></a>
             <a href="#projects" title="Projects"><i class="fas fa-tv"></i></a>
+            <a href="#contact" title="Contact" class="nav-contact"><i class="fas fa-envelope"></i></a>
         </nav>
         <div class="sidebar-bottom">
             <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
@@ -28,10 +29,14 @@
 
     <!-- Topbar -->
     <header class="topbar">
-        <div class="search-wrapper">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search...">
+        <div class="search-wrapper" id="search-wrapper">
+            <i class="fas fa-search" id="search-icon-btn"></i>
+            <input type="text" id="search-input" placeholder="Search sections..." autocomplete="off">
+            <button class="search-clear" id="search-clear" title="Clear"><i class="fas fa-times"></i></button>
+            <div class="search-dropdown" id="search-dropdown"></div>
         </div>
+        <!-- Mobile search toggle -->
+        <button class="mobile-search-btn" id="mobile-search-btn" title="Search"><i class="fas fa-search"></i></button>
         <div class="topbar-right">
             <div class="social-icons">
                 <a href="https://github.com/Ommii98" target="_blank"><i class="fab fa-github"></i></a>
@@ -333,6 +338,16 @@
         </footer>
 
     </main>
+
+    <!-- Mobile Search Overlay -->
+    <div class="mobile-search-overlay" id="mobile-search-overlay">
+        <div class="mobile-search-header">
+            <i class="fas fa-search"></i>
+            <input type="text" id="mobile-search-input" placeholder="Search sections..." autocomplete="off">
+            <button class="mobile-search-close" id="mobile-search-close" title="Close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-search-results" id="mobile-search-results"></div>
+    </div>
 
     <script src="script.js"></script>
 

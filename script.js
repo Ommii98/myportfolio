@@ -1,5 +1,155 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // =============================================
+    // Search Data — sections to search through
+    // =============================================
+    const searchData = [
+        { id: 'home',       label: 'Home',       desc: 'Introduction & hero section',          icon: 'fa-home' },
+        { id: 'about',      label: 'About Me',   desc: 'Professional summary & education',     icon: 'fa-smile' },
+        { id: 'skills',     label: 'Skills',     desc: 'Languages, frameworks & tools',        icon: 'fa-star' },
+        { id: 'experience', label: 'Experience', desc: 'Projects, achievements & certifications', icon: 'fa-briefcase' },
+        { id: 'projects',   label: 'Projects',   desc: 'Appointment Booking & E-Commerce app', icon: 'fa-tv' },
+        { id: 'contact',    label: 'Contact',    desc: 'Send a message or find social links',  icon: 'fa-envelope' },
+    ];
+
+    function buildSearchItem(item, resultContainer) {
+        const el = document.createElement('div');
+        el.className = 'search-item';
+        el.innerHTML = `
+            <div class="search-item-icon"><i class="fas ${item.icon}"></i></div>
+            <div class="search-item-text">
+                <strong>${item.label}</strong>
+                <span>${item.desc}</span>
+            </div>`;
+        el.addEventListener('click', () => {
+            const target = document.getElementById(item.id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+            closeAllSearch();
+        });
+        resultContainer.appendChild(el);
+    }
+
+    function filterResults(query) {
+        if (!query.trim()) return [];
+        const q = query.toLowerCase();
+        return searchData.filter(d =>
+            d.label.toLowerCase().includes(q) ||
+            d.desc.toLowerCase().includes(q) ||
+            d.id.toLowerCase().includes(q)
+        );
+    }
+
+    function renderResults(results, container) {
+        container.innerHTML = '';
+        if (results.length === 0) {
+            container.innerHTML = '<div class="search-no-results">No sections found. Try "skills", "projects", etc.</div>';
+        } else {
+            results.forEach(item => buildSearchItem(item, container));
+        }
+    }
+
+    function closeAllSearch() {
+        // Desktop
+        desktopDropdown.classList.remove('open');
+        desktopInput.value = '';
+        clearBtn.classList.remove('visible');
+        // Mobile overlay
+        mobileOverlay.classList.remove('open');
+        mobileInput.value = '';
+        mobileResults.innerHTML = '';
+    }
+
+    // =============================================
+    // Desktop Search
+    // =============================================
+    const desktopInput   = document.getElementById('search-input');
+    const desktopDropdown = document.getElementById('search-dropdown');
+    const clearBtn       = document.getElementById('search-clear');
+
+    if (desktopInput) {
+        desktopInput.addEventListener('input', () => {
+            const q = desktopInput.value;
+            clearBtn.classList.toggle('visible', q.length > 0);
+            if (q.trim().length === 0) {
+                desktopDropdown.classList.remove('open');
+                return;
+            }
+            const results = filterResults(q);
+            renderResults(results, desktopDropdown);
+            desktopDropdown.classList.add('open');
+        });
+
+        desktopInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAllSearch();
+        });
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            desktopInput.value = '';
+            clearBtn.classList.remove('visible');
+            desktopDropdown.classList.remove('open');
+            desktopInput.focus();
+        });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        const wrapper = document.getElementById('search-wrapper');
+        if (wrapper && !wrapper.contains(e.target)) {
+            desktopDropdown.classList.remove('open');
+        }
+    });
+
+    // =============================================
+    // Mobile Search Overlay
+    // =============================================
+    const mobileTrigger = document.getElementById('mobile-search-btn');
+    const mobileOverlay = document.getElementById('mobile-search-overlay');
+    const mobileInput   = document.getElementById('mobile-search-input');
+    const mobileClose   = document.getElementById('mobile-search-close');
+    const mobileResults = document.getElementById('mobile-search-results');
+
+    if (mobileTrigger) {
+        mobileTrigger.addEventListener('click', () => {
+            mobileOverlay.classList.add('open');
+            setTimeout(() => mobileInput && mobileInput.focus(), 100);
+        });
+    }
+
+    if (mobileClose) {
+        mobileClose.addEventListener('click', () => {
+            mobileOverlay.classList.remove('open');
+            mobileInput.value = '';
+            mobileResults.innerHTML = '';
+        });
+    }
+
+    if (mobileInput) {
+        mobileInput.addEventListener('input', () => {
+            const q = mobileInput.value;
+            if (q.trim().length === 0) {
+                mobileResults.innerHTML = '';
+                return;
+            }
+            const results = filterResults(q);
+            renderResults(results, mobileResults);
+        });
+
+        mobileInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                mobileOverlay.classList.remove('open');
+                mobileInput.value = '';
+                mobileResults.innerHTML = '';
+            }
+        });
+    }
+
+    // =============================================
     // Active Navigation Link Highlighting
+    // =============================================
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('.sidebar-nav a');
 
@@ -9,8 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            // Add an offset so it triggers a bit earlier
             if (scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
@@ -24,23 +172,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // =============================================
     // Smooth Scrolling for Navigation Links
+    // =============================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
+    // =============================================
     // Reveal Animations on Scroll
+    // =============================================
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -57,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initial state for animated elements
     const animateElements = document.querySelectorAll('.card, .hero-text, .section-header');
     animateElements.forEach(el => {
         el.style.opacity = '0';
