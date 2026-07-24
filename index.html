@@ -3,362 +3,1534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hariom Vishwakarma | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Hariom Vishwakarma | Premium Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Hariom Vishwakarma - Senior Full Stack Developer specializing in end-to-end web apps. Discover projects, experience, skills, and coding contributions.">
+    <meta name="keywords" content="Hariom Vishwakarma, Full Stack Developer, Angular, React, Node.js, IIIT Manipur, Portfolio, Web Developer, Jaunpur, Uttar Pradesh">
+    <meta name="author" content="Hariom Vishwakarma">
+    <meta name="robots" content="index, follow">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="Hariom Vishwakarma | Full Stack Developer Portfolio">
+    <meta property="og:description" content="Explore the portfolio of Hariom Vishwakarma: premium web application developer and electronics engineer.">
+    <meta property="og:image" content="assets/myphoto.jpeg">
+    <meta property="og:url" content="https://github.com/Ommii98">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hariom Vishwakarma | Portfolio">
+    <meta name="twitter:description" content="Explore my full-stack web projects, skills dashboard, and experience timelines.">
+    <meta name="twitter:image" content="assets/myphoto.jpeg">
+
+    <!-- Theme Detection Style Block to avoid layout flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+            if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Hariom Vishwakarma",
+      "jobTitle": "Full Stack Developer",
+      "url": "https://github.com/Ommii98",
+      "sameAs": [
+        "https://www.linkedin.com/in/hariom-vishwakarma-992a16257",
+        "https://x.com/HariomVish03"
+      ],
+      "knowsAbout": ["Angular", "React", "Node.js", "Express.js", "MongoDB", "MySQL", "JavaScript", "Python"],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Indian Institute of Information Technology, Manipur"
+      }
+    }
+    </script>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <i class="fas fa-bolt"></i>
-        </div>
-        <nav class="sidebar-nav">
-            <a href="#home" class="active" title="Home"><i class="fas fa-home"></i></a>
-            <a href="#about" title="About"><i class="fas fa-smile"></i></a>
-            <a href="#skills" title="Skills"><i class="fas fa-star"></i></a>
-            <a href="#experience" title="Experience"><i class="fas fa-briefcase"></i></a>
-            <a href="#projects" title="Projects"><i class="fas fa-tv"></i></a>
-            <a href="#contact" title="Contact" class="nav-contact"><i class="fas fa-envelope"></i></a>
-        </nav>
-        <div class="sidebar-bottom">
-            <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
-        </div>
-    </aside>
 
-    <!-- Topbar -->
-    <header class="topbar">
-        <div class="search-wrapper" id="search-wrapper">
-            <i class="fas fa-search" id="search-icon-btn"></i>
-            <input type="text" id="search-input" placeholder="Search sections..." autocomplete="off">
-            <button class="search-clear" id="search-clear" title="Clear"><i class="fas fa-times"></i></button>
-            <div class="search-dropdown" id="search-dropdown"></div>
-        </div>
-        <!-- Mobile search toggle -->
-        <button class="mobile-search-btn" id="mobile-search-btn" title="Search"><i class="fas fa-search"></i></button>
-        <div class="topbar-right">
-            <div class="social-icons">
-                <a href="https://github.com/Ommii98" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://x.com/HariomVish03" target="_blank"><i class="fab fa-twitter"></i></a>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen" role="status" aria-label="Loading portfolio contents">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">
+                <span class="text-glow">Hariom Vishwakarma</span>
+                <span class="loading-percentage" id="load-pct">0%</span>
             </div>
-            <div class="profile-mini">
-                <img src="assets/myphoto.jpeg" alt="Profile">
+            <div class="loading-progress"><div class="loading-progress-bar" id="load-progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Animated Clip Switcher Overlay (Theme switching transition) -->
+    <div class="theme-transition-overlay" id="theme-transition-overlay" aria-hidden="true"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-wrapper" aria-hidden="true">
+        <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor-dot" id="custom-cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-outline" id="custom-cursor-outline" aria-hidden="true"></div>
+
+    <!-- Aurora Background Blobs & Noise -->
+    <div class="aurora-bg-container" aria-hidden="true">
+        <div class="noise-overlay"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Floating Navigation Header -->
+    <header class="navbar-wrapper" id="sticky-navbar">
+        <div class="navbar-container">
+            <a href="#home" class="nav-logo" aria-label="Go to home page">
+                <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                <span class="logo-text">Hariom<span class="highlight">.V</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#github" class="nav-link">GitHub</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="navbar-actions">
+                <!-- Theme Switcher Button -->
+                <button class="action-btn theme-toggle-btn" id="theme-toggler" title="Toggle color theme" aria-label="Toggle light or dark theme">
+                    <i class="fas fa-moon dark-icon"></i>
+                    <i class="fas fa-sun light-icon"></i>
+                </button>
+                
+                <!-- Command Palette Trigger Button -->
+                <button class="action-btn cmd-palette-trigger" id="cmd-trigger-btn" title="Open Command Palette (Ctrl+K)" aria-label="Open search and commands">
+                    <i class="fas fa-keyboard"></i>
+                    <span class="cmd-badge">⌘K</span>
+                </button>
+
+                <!-- Mobile Menu Hamburger -->
+                <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle mobile menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        
-        <!-- Hero Section -->
-        <section id="home" class="section hero">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <div class="badge">
-                        <span class="dot"></span> Hello, I am
+    <!-- Mobile Dropdown Navigation -->
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+        <div class="mobile-nav-header">
+            <span class="logo-text">Hariom<span class="highlight">.V</span></span>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+        </div>
+        <nav class="mobile-nav-links">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#github" class="mobile-link">GitHub</a>
+            <a href="#certificates" class="mobile-link">Certificates</a>
+            <a href="#resume" class="mobile-link">Resume</a>
+            <a href="#blog" class="mobile-link">Blog</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </nav>
+        <div class="mobile-nav-footer">
+            <div class="social-links-mobile">
+                <a href="https://github.com/Ommii98" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/HariomVish03" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="content-wrapper" id="main-content">
+
+        <!-- ==========================================
+             HERO SECTION
+             ========================================== -->
+        <section id="home" class="section hero-sec">
+            <div class="hero-glow-back"></div>
+            <div class="grid-container hero-grid">
+                <div class="hero-info animate-reveal">
+                    <div class="availability-badge">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Available for Hire & Projects</span>
                     </div>
-                    <h1>Hariom <span class="highlight">Vishwakarma</span></h1>
-                    <h2>Full Stack Developer</h2>
-                    <p>Final-year B.Tech student specializing in end-to-end web application development. I build scalable, user-friendly applications using Angular, React, and Node.js.</p>
+                    
+                    <h1 class="hero-title">
+                        Hi, I am <br>
+                        <span class="gradient-text text-glow">Hariom Vishwakarma</span>
+                    </h1>
+                    
+                    <h2 class="hero-subtitle">
+                        I build <span class="typewriter-text" id="typewriter" data-words='["Scalable Full Stack Web Apps", "Robust Angular Interfaces", "Modern React Components", "High Performance Backend APIs"]'></span><span class="typewriter-cursor">|</span>
+                    </h2>
+                    
+                    <p class="hero-desc">
+                        Final-year Electronics & Communication engineering student at <strong class="school-highlight">IIIT Manipur</strong>, specializing in end-to-end web application development. I specialize in designing and engineering high-impact digital products.
+                    </p>
+
+                    <div class="hero-location">
+                        <i class="fas fa-map-marker-alt"></i> Jaunpur, Uttar Pradesh, India
+                    </div>
+
                     <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                        <a href="#projects" class="btn btn-glow">
+                            <span>Explore Projects</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost-border">
+                            <span>Get in Touch</span>
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#resume" class="btn btn-ghost-only">
+                            <span>View Resume</span>
+                            <i class="fas fa-file-invoice"></i>
+                        </a>
                     </div>
-                </div>
-                <div class="hero-image-wrapper">
-                    <div class="image-bg-shape"></div>
-                    <img src="assets/myphoto.jpeg" alt="Hariom Vishwakarma" class="hero-image">
-                    <div class="floating-icon icon-1"><i class="fab fa-react"></i></div>
-                    <div class="floating-icon icon-2"><i class="fab fa-angular"></i></div>
-                    <div class="floating-icon icon-3"><i class="fab fa-node-js"></i></div>
-                </div>
-            </div>
-        </section>
 
-        <!-- About & Education Section -->
-        <section id="about" class="section about">
-            <div class="section-header">
-                <h2>About <span class="highlight">Me</span></h2>
-                <p>My professional summary and educational background.</p>
-            </div>
-            
-            <div class="about-grid">
-                <div class="card about-card">
-                    <h3>Professional Summary</h3>
-                    <p>I am a final-year B.Tech student specializing in end-to-end web application development. I excel at building scalable, user-friendly applications with expertise in frontend frameworks, backend integration, and RESTful APIs.</p>
-                    <ul class="personal-details">
-                        <li><i class="fas fa-map-marker-alt"></i> Jaunpur, Uttar Pradesh</li>
-                        <li><i class="fas fa-language"></i> English, Hindi</li>
-                        <li><i class="fas fa-heart"></i> Agentic coding, JavaScript libraries</li>
-                    </ul>
-                </div>
-
-                <div class="card education-card">
-                    <img src="assets/college.png" alt="IIIT Manipur Campus" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h3>Education</h3>
-                    <div class="edu-item">
-                        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="edu-details">
-                            <h4>B-Tech in Electronics & Communication</h4>
-                            <h5>IIIT Manipur</h5>
-                            <span class="year">2022 – 2026</span>
+                    <!-- Statistics Cards Grid -->
+                    <div class="hero-stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number" data-count="3">3+</span>
+                            <span class="stat-label">Years of Development</span>
                         </div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-icon"><i class="fas fa-school"></i></div>
-                        <div class="edu-details">
-                            <h4>Intermediate (12th) - First Division</h4>
-                            <h5>BNSD Inter College, Kanpur</h5>
-                            <span class="year">2021</span>
+                        <div class="stat-card">
+                            <span class="stat-number" data-count="15">15+</span>
+                            <span class="stat-label">Projects Completed</span>
                         </div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-icon"><i class="fas fa-book"></i></div>
-                        <div class="edu-details">
-                            <h4>High School (10th) - Distinction</h4>
-                            <h5>St. John Inter College, Kanpur</h5>
-                            <span class="year">2019</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Wave decoration for cards will be added via CSS -->
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section skills">
-            <div class="section-header">
-                <h2>Technical <span class="highlight">Skills</span></h2>
-                <p>Technologies and tools I work with.</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="card skill-card">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3>Languages</h3>
-                    <div class="tags">
-                        <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Python</span><span>SQL</span>
-                    </div>
-                </div>
-                <div class="card skill-card">
-                    <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Frontend</h3>
-                    <div class="tags">
-                        <span>Angular</span><span>React</span>
-                    </div>
-                </div>
-                <div class="card skill-card">
-                    <div class="skill-icon"><i class="fas fa-server"></i></div>
-                    <h3>Backend</h3>
-                    <div class="tags">
-                        <span>Node.js</span><span>Express.js</span><span>REST APIs</span>
-                    </div>
-                </div>
-                <div class="card skill-card">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <h3>Databases & Tools</h3>
-                    <div class="tags">
-                        <span>MongoDB</span><span>MySQL</span><span>Git</span><span>Postman</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section (Vertical Timeline) -->
-        <section id="experience" class="section experience">
-            <div class="section-header">
-                <h2>Professional <span class="highlight">Experience</span></h2>
-                <p>My journey and work history.</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-dot"></div>
-                    <div class="card timeline-card">
-                        <img src="assets/coding.png" alt="Coding Workspace" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
-                        <h3>Full Stack Developer</h3>
-                        <h4>Independent Projects & Open Source</h4>
-                        <ul class="exp-list">
-                            <li>Architected and developed comprehensive full-stack solutions, including a fully-featured E-commerce platform and a Hospital Services management system.</li>
-                            <li>Implemented robust, secure user authentication workflows and scalable backend APIs using Node.js and MongoDB.</li>
-                            <li>Designed interactive data analysis applications such as a Sales Dashboard and Heart Attack Rate Analysis tool using modern JavaScript frameworks.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-dot"></div>
-                    <div class="card timeline-card">
-                        <h3>Achievements & Certifications</h3>
-                        <h4>Continuous Learning</h4>
-                        <ul class="exp-list">
-                            <li>Completed advanced courses in Web Development, Angular, and MEAN Stack.</li>
-                            <li>Contributor to open-source projects on GitHub.</li>
-                            <li>Actively participated in workshops on emerging web technologies.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section (Mac OS Windows) -->
-        <section id="projects" class="section projects">
-            <div class="section-header">
-                <h2>Key <span class="highlight">Projects</span></h2>
-                <p>Some of the things I've built.</p>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="mac-window card">
-                    <div class="mac-header">
-                        <div class="mac-buttons">
-                            <span class="mac-close"></span>
-                            <span class="mac-min"></span>
-                            <span class="mac-max"></span>
-                        </div>
-                        <div class="mac-title">Appointment Booking System</div>
-                    </div>
-                    <div class="mac-content">
-                        <img src="assets/myphoto3.jpeg" alt="Appointment Booking System" class="project-img">
-                        <div class="project-info">
-                            <h3>Full Stack Appointment Booking System (2024)</h3>
-                            <p>Developed a system for doctors and hospitals with triple authentication (Patient, Doctor, Admin). Features included appointment management and specialized dashboards.</p>
-                            <div class="tags">
-                                <span>React</span><span>Node.js</span><span>MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Ommii98/Hospital_services" target="_blank" class="btn btn-sm btn-primary">Visit Site</a>
-                                <a href="https://github.com/Ommii98/Hospital_services" target="_blank" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
-                            </div>
+                        <div class="stat-card">
+                            <span class="stat-number" data-count="10">10+</span>
+                            <span class="stat-label">Technologies Mastered</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="mac-window card">
-                    <div class="mac-header">
-                        <div class="mac-buttons">
-                            <span class="mac-close"></span>
-                            <span class="mac-min"></span>
-                            <span class="mac-max"></span>
+                <!-- 3D Profile Card -->
+                <div class="hero-visual animate-reveal">
+                    <div class="profile-card-3d" id="profile-card-3d">
+                        <div class="card-glares"></div>
+                        <div class="profile-img-container">
+                            <img src="assets/myphoto.jpeg" alt="Hariom Vishwakarma profile picture" class="profile-avatar" loading="eager">
+                            <div class="aurora-profile-glow"></div>
                         </div>
-                        <div class="mac-title">E-Commerce Platform</div>
-                    </div>
-                    <div class="mac-content">
-                        <img src="assets/myphoto4.jpeg" alt="MEAN Stack E-Commerce Platform" class="project-img">
-                        <div class="project-info">
-                            <h3>MEAN Stack E-Commerce Platform (2024)</h3>
-                            <p>Built a feature-rich platform using MongoDB, Express, Angular, and Node.js. Integrated JWT authentication, payment gateways, and a responsive UI.</p>
-                            <div class="tags">
-                                <span>Angular</span><span>Express</span><span>Node.js</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Ommii98/E-commerce-Forever" target="_blank" class="btn btn-sm btn-primary">Visit Site</a>
-                                <a href="https://github.com/Ommii98/E-commerce-Forever" target="_blank" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <div class="section-header">
-                <h2>Get In <span class="highlight">Touch</span></h2>
-                <p>Feel free to reach out for collaborations or just a friendly hello!</p>
-            </div>
-            
-            <div class="contact-grid">
-                <!-- Form Card -->
-                <div class="card form-card">
-                    <h3>Send a Message</h3>
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
-                        </div>
-                        <button type="submit" id="submit-btn" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                    <p class="direct-email-note">Or email directly: <a href="mailto:hariomvishwakarma8076@gmail.com">hariomvishwakarma8076@gmail.com</a></p>
-                </div>
-
-                <!-- Info Card -->
-                <div class="card info-card">
-                    <h3>Contact Information</h3>
-                    <div class="info-items">
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="info-text">
-                                <h4>Location</h4>
-                                <p>Jaunpur, Uttar Pradesh</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-language"></i></div>
-                            <div class="info-text">
-                                <h4>Languages</h4>
-                                <p>English, Hindi</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-heart"></i></div>
-                            <div class="info-text">
-                                <h4>Interests</h4>
-                                <p>Agentic coding, efficient programming solutions, exploring new JavaScript libraries.</p>
-                            </div>
+                        
+                        <!-- Mini interactive elements on profile card -->
+                        <div class="floating-tech-badge badge-angular" title="Angular Framework"><i class="fab fa-angular"></i></div>
+                        <div class="floating-tech-badge badge-react" title="React Library"><i class="fab fa-react"></i></div>
+                        <div class="floating-tech-badge badge-node" title="Node.js Engine"><i class="fab fa-node-js"></i></div>
+                        
+                        <div class="profile-details-bar">
+                            <h3>Hariom Vishwakarma</h3>
+                            <p>Full Stack Engineer</p>
                         </div>
                     </div>
                     
-                    <div class="social-links-large mt-4">
-                        <a href="https://github.com/Ommii98" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://x.com/HariomVish03" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="mailto:hariomvishwakarma8076@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <div class="visual-decorations">
+                        <div class="decor-circle circle-1"></div>
+                        <div class="decor-circle circle-2"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Simple Footer -->
-        <footer class="footer-simple">
-            <p class="copyright">&copy; 2026 Hariom Vishwakarma. Built with HTML, CSS, and JS.</p>
+        <!-- ==========================================
+             ABOUT SECTION
+             ========================================== -->
+        <section id="about" class="section about-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Overview</span>
+                <h2 class="section-heading">About <span class="gradient-text">Me</span></h2>
+                <p class="section-desc">My professional journey, academic path, and engineering philosophy.</p>
+            </div>
+
+            <div class="grid-container about-grid">
+                <div class="about-narrative animate-on-scroll">
+                    <div class="premium-card story-card glass-panel">
+                        <div class="spotlight-layer"></div>
+                        <h3 class="card-title"><i class="fas fa-user-tie"></i> Professional Narrative</h3>
+                        <p>I am a passionate creative engineer who sits at the intersection of Hardware Engineering and modern Software Design. Currently pursuing my B.Tech at Indian Institute of Information Technology, Manipur, I have dedicated myself to mastering full-stack web application development.</p>
+                        <p>I focus on building secure, performant architectures, utilizing JavaScript frameworks on the frontend (Angular, React) and robust API engines on the backend (Node.js, Express.js). I thrive on creating clean, intuitive user interfaces backed by stable databases like MongoDB and MySQL.</p>
+                        
+                        <div class="strengths-wrapper">
+                            <h4 class="sub-title">Core Strengths</h4>
+                            <div class="strengths-tags">
+                                <span class="strength-tag"><i class="fas fa-check-circle"></i> Clean Code Architectures</span>
+                                <span class="strength-tag"><i class="fas fa-check-circle"></i> Adaptive Problem Solving</span>
+                                <span class="strength-tag"><i class="fas fa-check-circle"></i> End-to-end Backend Security</span>
+                                <span class="strength-tag"><i class="fas fa-check-circle"></i> High-Fidelity UI Implementations</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Meta Grid (Quick Information / Fun Facts) -->
+                    <div class="about-meta-grid">
+                        <div class="premium-card meta-info-card glass-panel text-center">
+                            <div class="meta-icon"><i class="fas fa-bullseye"></i></div>
+                            <h4>Current Focus</h4>
+                            <p>Agentic coding models & full-stack optimizations.</p>
+                        </div>
+                        <div class="premium-card meta-info-card glass-panel text-center">
+                            <div class="meta-icon"><i class="fas fa-brain"></i></div>
+                            <h4>Interests</h4>
+                            <p>Exploring JS libraries, Electronics, and UI design.</p>
+                        </div>
+                        <div class="premium-card meta-info-card glass-panel text-center">
+                            <div class="meta-icon"><i class="fas fa-lightbulb"></i></div>
+                            <h4>Soft Skills</h4>
+                            <p>Team Leadership, Critical Thinking, Collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Timeline -->
+                <div class="about-academic-timeline animate-on-scroll">
+                    <div class="premium-card timeline-academic-card glass-panel">
+                        <div class="spotlight-layer"></div>
+                        <div class="college-hero-container">
+                            <img src="assets/college.png" alt="IIIT Manipur Campus Photo" class="college-hero-img" loading="lazy">
+                            <div class="college-hero-overlay">
+                                <h3>Education</h3>
+                                <p>My academic foundation in India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="academic-timeline-list">
+                            <div class="academic-timeline-item">
+                                <div class="timeline-meta">
+                                    <span class="timeline-year">2022 – 2026</span>
+                                    <span class="timeline-grade">B.Tech</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Electronics and Communication Engineering (VLSI)</h4>
+                                    <h5>Indian Institute of Information Technology, Manipur</h5>
+                                    <p>Focusing on digital circuits, VLSI, microcontrollers, and software architecture integrations.</p>
+                                </div>
+                            </div>
+
+                            <div class="academic-timeline-item">
+                                <div class="timeline-meta">
+                                    <span class="timeline-year">2021</span>
+                                    <span class="timeline-grade">12th Grade</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Intermediate (First Division)</h4>
+                                    <h5>BNSD Inter College, Kanpur</h5>
+                                    <p>Majored in Physics, Chemistry, and Mathematics.</p>
+                                </div>
+                            </div>
+
+                            <div class="academic-timeline-item">
+                                <div class="timeline-meta">
+                                    <span class="timeline-year">2019</span>
+                                    <span class="timeline-grade">10th Grade</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>High School (Distinction)</h4>
+                                    <h5>St. John Inter College, Kanpur</h5>
+                                    <p>Foundation study in mathematics, basic science, and languages.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SKILLS SECTION
+             ========================================== -->
+        <section id="skills" class="section skills-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-heading">Technical <span class="gradient-text">Skills</span></h2>
+                <p class="section-desc">Search, filter, and review my confidence, years of experience, and project usage levels.</p>
+            </div>
+
+            <div class="skills-dashboard-wrapper animate-on-scroll">
+                <div class="skills-dashboard-header glass-panel">
+                    <!-- Search Input & Icon -->
+                    <div class="skills-search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="skills-search-input" placeholder="Search technical skill (e.g. React, Python)..." aria-label="Search technical skills">
+                    </div>
+                    
+                    <!-- Filters Categorization Buttons -->
+                    <div class="skills-filter-buttons" id="skills-filters" role="tablist" aria-label="Skill Categories">
+                        <button class="filter-btn active" data-category="all" role="tab" aria-selected="true">All Skills</button>
+                        <button class="filter-btn" data-category="languages" role="tab" aria-selected="false">Languages</button>
+                        <button class="filter-btn" data-category="frontend" role="tab" aria-selected="false">Frontend</button>
+                        <button class="filter-btn" data-category="backend" role="tab" aria-selected="false">Backend</button>
+                        <button class="filter-btn" data-category="databases" role="tab" aria-selected="false">Databases & Tools</button>
+                    </div>
+                </div>
+
+                <!-- Skills Interactive Grid -->
+                <div class="skills-interactive-grid" id="skills-grid">
+                    <!-- Dynamically populated or updated in script.js to show tooltips, circular metrics & percentages -->
+                                     <!-- JS Skill 1: JavaScript -->
+                    <div class="skill-interactive-card glass-panel" data-category="languages" data-name="javascript">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon js-brand"><i class="fab fa-js"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>JavaScript</h3>
+                                <span>Languages</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">92%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>High</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="92%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 3+ Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 10+ Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 2: Python -->
+                    <div class="skill-interactive-card glass-panel" data-category="languages" data-name="python">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon python-brand"><i class="fab fa-python"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>Python</h3>
+                                <span>Languages</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">75%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Intermediate</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="75%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 4 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 3: HTML -->
+                    <div class="skill-interactive-card glass-panel" data-category="languages" data-name="html5 html">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon html-brand"><i class="fab fa-html5"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>HTML5</h3>
+                                <span>Languages</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">95%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="95%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 3+ Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 12+ Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 4: CSS -->
+                    <div class="skill-interactive-card glass-panel" data-category="languages" data-name="css3 css">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon css-brand"><i class="fab fa-css3-alt"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>CSS3</h3>
+                                <span>Languages</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">90%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="90%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 3+ Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 12+ Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 5: SQL -->
+                    <div class="skill-interactive-card glass-panel" data-category="languages" data-name="sql sqlite mysql">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon sql-brand"><i class="fas fa-database"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>SQL</h3>
+                                <span>Languages</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">80%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="80%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 5 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 6: Angular -->
+                    <div class="skill-interactive-card glass-panel" data-category="frontend" data-name="angular angularjs">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon angular-brand"><i class="fab fa-angular"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>Angular</h3>
+                                <span>Frontend</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">88%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="88%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 4 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 7: React -->
+                    <div class="skill-interactive-card glass-panel" data-category="frontend" data-name="react reactjs">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon react-brand"><i class="fab fa-react"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>React</h3>
+                                <span>Frontend</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">85%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="85%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 6 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 8: Node.js -->
+                    <div class="skill-interactive-card glass-panel" data-category="backend" data-name="node node.js backend express">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon node-brand"><i class="fab fa-node-js"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>Node.js / Express</h3>
+                                <span>Backend</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">86%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="86%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 7 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 9: REST APIs -->
+                    <div class="skill-interactive-card glass-panel" data-category="backend" data-name="rest api apis integration">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon api-brand"><i class="fas fa-network-wired"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>RESTful APIs</h3>
+                                <span>Backend</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">90%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="90%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 9 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 10: MongoDB -->
+                    <div class="skill-interactive-card glass-panel" data-category="databases" data-name="mongodb mongo db database">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon db-brand"><i class="fas fa-leaf"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>MongoDB</h3>
+                                <span>Databases & Tools</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">85%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="85%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 8 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 11: Git / Version Control -->
+                    <div class="skill-interactive-card glass-panel" data-category="databases" data-name="git github version control">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon git-brand"><i class="fab fa-git-alt"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>Git & GitHub</h3>
+                                <span>Databases & Tools</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">90%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="90%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 3+ Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 15+ Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 12: Postman -->
+                    <div class="skill-interactive-card glass-panel" data-category="databases" data-name="postman testing apis postman-icon">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon postman-brand"><i class="fas fa-paper-plane"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>Postman</h3>
+                                <span>Databases & Tools</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">88%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="88%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 2 Years Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 8 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 13: AWS -->
+                    <div class="skill-interactive-card glass-panel" data-category="databases" data-name="aws cloud web services amazon">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon js-brand" style="background: rgba(255, 153, 0, 0.1); color: #ff9900;"><i class="fab fa-aws"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>AWS</h3>
+                                <span>Cloud / DevOps</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">80%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="80%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 1+ Year Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 4 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Skill 14: Docker -->
+                    <div class="skill-interactive-card glass-panel" data-category="databases" data-name="docker containerization devops">
+                        <div class="spotlight-layer"></div>
+                        <div class="skill-card-top">
+                            <div class="skill-brand-icon js-brand" style="background: rgba(36, 150, 237, 0.1); color: #2496ed;"><i class="fab fa-docker"></i></div>
+                            <div class="skill-title-meta">
+                                <h3>Docker</h3>
+                                <span>Cloud / DevOps</span>
+                            </div>
+                            <div class="skill-confidence-badge" title="Confidence Level">82%</div>
+                        </div>
+                        <div class="skill-card-body">
+                            <div class="skill-progress-lbl">
+                                <span>Confidence</span>
+                                <span>Strong</span>
+                            </div>
+                            <div class="skill-prog-track"><div class="skill-prog-fill" data-width="82%"></div></div>
+                            <div class="skill-card-details">
+                                <span><i class="fas fa-calendar-alt"></i> 1+ Year Exp</span>
+                                <span><i class="fas fa-briefcase"></i> 5 Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             EXPERIENCE SECTION
+             ========================================== -->
+        <section id="experience" class="section experience-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Career</span>
+                <h2 class="section-heading">Professional <span class="gradient-text">Experience</span></h2>
+                <p class="section-desc">My professional roadmap, timeline, and work history.</p>
+            </div>
+
+            <!-- Vertical Timeline Track -->
+            <div class="experience-timeline-container animate-on-scroll">
+                <div class="timeline-center-line"></div>
+
+                <!-- Left Item: PSS Automate Internship -->
+                <div class="timeline-block block-left">
+                    <div class="timeline-icon-dot"><i class="fas fa-briefcase"></i></div>
+                    <div class="premium-card timeline-content-card glass-panel expandable-card">
+                        <div class="spotlight-layer"></div>
+                        <div class="card-timeline-header">
+                            <span class="badge-role">Full Stack Developer Intern</span>
+                            <span class="timeline-date-tag">Dec 2025 - April 2026</span>
+                        </div>
+                        <div class="card-main-info">
+                            <h3 class="exp-role">Intern - Full Stack Developer</h3>
+                            <h4 class="exp-company">PSS Automate Private Limited, Hyderabad</h4>
+                        </div>
+                        
+                        <div class="exp-details-expand">
+                            <ul class="exp-bullet-points">
+                                <li>Contributed to real-time software development by building scalable full-stack features, improving overall system efficiency by 15%.</li>
+                                <li>Collaborated with senior professionals to integrate new technologies and optimize existing codebases, reducing application load time by 20%.</li>
+                                <li>Proactively managed and delivered assigned project modules 10% faster than the projected timeline, demonstrating strong adaptability and a collaborative approach.</li>
+                            </ul>
+                            <div class="exp-tech-tags">
+                                <span>Angular</span><span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>MySQL</span><span>AWS</span><span>Docker</span>
+                            </div>
+                        </div>
+                        <button class="expand-toggle-btn" aria-label="Expand details"><i class="fas fa-chevron-down"></i> Details</button>
+                    </div>
+                </div>
+
+                <!-- Right Item: Freelance / Independent -->
+                <div class="timeline-block block-right">
+                    <div class="timeline-icon-dot"><i class="fas fa-laptop-code"></i></div>
+                    <div class="premium-card timeline-content-card glass-panel expandable-card">
+                        <div class="spotlight-layer"></div>
+                        <div class="card-timeline-header">
+                            <span class="badge-role">Full Stack Engineer</span>
+                            <span class="timeline-date-tag">2024 - Present</span>
+                        </div>
+                        <div class="card-main-info">
+                            <h3 class="exp-role">Independent Projects & Open Source</h3>
+                            <h4 class="exp-company">Freelance Web Architect</h4>
+                        </div>
+                        
+                        <div class="exp-details-expand">
+                            <ul class="exp-bullet-points">
+                                <li>Architected and engineered custom responsive web platforms, including an appointment scheduler for medical professionals with triple layer verification.</li>
+                                <li>Configured and optimized MongoDB clusters and Express.js REST microservices, improving request processing times by up to 25%.</li>
+                                <li>Authored clean, reactive state modules in Angular and React applications, reducing bundle sizes through code-splitting and memoized callbacks.</li>
+                            </ul>
+                            <div class="exp-tech-tags">
+                                <span>React</span><span>Angular</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>REST APIs</span>
+                            </div>
+                        </div>
+                        <button class="expand-toggle-btn" aria-label="Expand details"><i class="fas fa-chevron-down"></i> Details</button>
+                    </div>
+                </div>
+
+                <!-- Left Item: Student Developer -->
+                <div class="timeline-block block-left">
+                    <div class="timeline-icon-dot"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="premium-card timeline-content-card glass-panel expandable-card">
+                        <div class="spotlight-layer"></div>
+                        <div class="card-timeline-header">
+                            <span class="badge-role">Student Developer</span>
+                            <span class="timeline-date-tag">2022 - 2026</span>
+                        </div>
+                        <div class="card-main-info">
+                            <h3 class="exp-role">B.Tech Technical Contributor</h3>
+                            <h4 class="exp-company">IIIT Manipur</h4>
+                        </div>
+                        
+                        <div class="exp-details-expand">
+                            <ul class="exp-bullet-points">
+                                <li>Coordinated coding workshops for first and second year undergraduates focusing on JavaScript structures and CSS selectors.</li>
+                                <li>Engineered academic hardware-software interface systems (such as Arduino/Raspberry Pi components controlled via web interfaces).</li>
+                                <li>Participated in national level software competitions, hackathons, and web optimization tasks.</li>
+                            </ul>
+                            <div class="exp-tech-tags">
+                                <span>C/C++</span><span>Python</span><span>JavaScript</span><span>HTML/CSS</span><span>IoT Protocols</span>
+                            </div>
+                        </div>
+                        <button class="expand-toggle-btn" aria-label="Expand details"><i class="fas fa-chevron-down"></i> Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PROJECTS SECTION
+             ========================================== -->
+        <section id="projects" class="section projects-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Showcase</span>
+                <h2 class="section-heading">Key <span class="gradient-text">Projects</span></h2>
+                <p class="section-desc">Fully featured web platforms built with precision, layout optimization, and high performance.</p>
+            </div>
+
+            <div class="projects-dashboard-wrapper animate-on-scroll">
+                <div class="projects-dashboard-header glass-panel">
+                    <div class="proj-search-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="projects-search-input" placeholder="Search projects by title, stack, or tag..." aria-label="Search portfolio projects">
+                    </div>
+                    
+                    <div class="proj-filters-group">
+                        <div class="proj-filter-tabs" id="project-filters">
+                            <button class="proj-tab active" data-filter="all">All</button>
+                            <button class="proj-tab" data-filter="react">React</button>
+                            <button class="proj-tab" data-filter="angular">Angular</button>
+                            <button class="proj-tab" data-filter="node">Node.js</button>
+                        </div>
+                        
+                        <div class="proj-sort-dropdown">
+                            <select id="project-sort" aria-label="Sort projects">
+                                <option value="newest">Newest First</option>
+                                <option value="name">Alphabetical</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-premium-grid" id="projects-grid">
+                    <!-- Project Card 1 -->
+                    <div class="project-mac-card glass-panel" data-tech="node express mongodb jwt aws docker" data-date="2024-08-01" data-name="appointment booking system">
+                        <div class="spotlight-layer"></div>
+                        <div class="mac-bar">
+                            <div class="mac-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="mac-title">Hospital Services Manager</div>
+                        </div>
+                        <div class="proj-image-wrap">
+                            <img src="assets/myphoto3.jpeg" alt="Appointment Booking System Dashboard Preview" class="proj-banner-img" loading="lazy">
+                            <div class="proj-overlay-actions">
+                                <button class="btn-proj-action view-case-study" data-project="hospital" aria-label="View Case Study info"><i class="fas fa-file-alt"></i> Case Study</button>
+                                <a href="https://github.com/Ommii98/Hospital_services" target="_blank" class="btn-proj-action" aria-label="View code on GitHub"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                        <div class="proj-meta-body">
+                            <div class="proj-date-badge">2024</div>
+                            <h3 class="proj-title">Full Stack Appointment Booking System</h3>
+                            <p class="proj-brief">Scalable doctor appointment booking platform featuring three-level authentication (Patients, Doctors, Admins) that improves operational efficiency by nearly 35% with optimized APIs and Docker/AWS workflows.</p>
+                            <div class="proj-tags">
+                                <span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>AWS</span><span>Docker</span>
+                            </div>
+                            <div class="proj-footer-links">
+                                <a href="https://github.com/Ommii98/Hospital_services" target="_blank" class="proj-link-primary">Visit Repository <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-mac-card glass-panel" data-tech="angular node express mongodb docker aws" data-date="2024-05-15" data-name="e-commerce platform">
+                        <div class="spotlight-layer"></div>
+                        <div class="mac-bar">
+                            <div class="mac-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="mac-title">MEAN E-Commerce Hub</div>
+                        </div>
+                        <div class="proj-image-wrap">
+                            <img src="assets/myphoto4.jpeg" alt="MEAN E-Commerce platform preview" class="proj-banner-img" loading="lazy">
+                            <div class="proj-overlay-actions">
+                                <button class="btn-proj-action view-case-study" data-project="ecommerce" aria-label="View Case Study info"><i class="fas fa-file-alt"></i> Case Study</button>
+                                <a href="https://github.com/Ommii98/E-commerce-Forever" target="_blank" class="btn-proj-action" aria-label="View code on GitHub"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                        <div class="proj-meta-body">
+                            <div class="proj-date-badge">2024</div>
+                            <h3 class="proj-title">MERN Stack E-Commerce Platform</h3>
+                            <p class="proj-brief">Complete retail e-commerce platform incorporating dynamic cataloging, interactive shopping cart, order management, secure JWT authentication, and containerized deployment workflows.</p>
+                            <div class="proj-tags">
+                                <span>MongoDB</span><span>Express.js</span><span>Angular</span><span>Node.js</span><span>Docker</span><span>AWS</span>
+                            </div>
+                            <div class="proj-footer-links">
+                                <a href="https://github.com/Ommii98/E-commerce-Forever" target="_blank" class="proj-link-primary">Visit Repository <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             GITHUB SECTION
+             ========================================== -->
+        <section id="github" class="section github-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Activity</span>
+                <h2 class="section-heading">Open Source <span class="gradient-text">Contributions</span></h2>
+                <p class="section-desc">My latest GitHub activity grid, code contribution heat map, and repository metrics.</p>
+            </div>
+
+            <div class="grid-container github-grid animate-on-scroll">
+                <!-- Contribution Calendar / Heatmap Visual Card -->
+                <div class="premium-card github-heatmap-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="heatmap-header">
+                        <h3><i class="fab fa-github"></i> Contribution Calendar</h3>
+                        <a href="https://github.com/Ommii98" target="_blank" class="github-profile-link">@Ommii98 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    
+                    <!-- Calendar Simulated Interactive Cells -->
+                    <div class="github-calendar-wrapper">
+                        <div class="calendar-months" aria-hidden="true">
+                            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                        </div>
+                        <div class="calendar-grid" id="github-contrib-grid">
+                            <!-- 52 columns of 7 days generated in script.js with variable opacity states -->
+                        </div>
+                        <div class="calendar-legend">
+                            <span>Less</span>
+                            <span class="legend-cell level-0"></span>
+                            <span class="legend-cell level-1"></span>
+                            <span class="legend-cell level-2"></span>
+                            <span class="legend-cell level-3"></span>
+                            <span class="legend-cell level-4"></span>
+                            <span>More</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Stats Summary Panel -->
+                <div class="github-stats-panel">
+                    <div class="premium-card github-metric-card glass-panel">
+                        <div class="metric-top">
+                            <i class="fas fa-star metric-icon text-yellow"></i>
+                            <h4>Stars Earned</h4>
+                        </div>
+                        <div class="metric-value">48+</div>
+                    </div>
+                    
+                    <div class="premium-card github-metric-card glass-panel">
+                        <div class="metric-top">
+                            <i class="fas fa-code-branch metric-icon text-indigo"></i>
+                            <h4>Total PRs</h4>
+                        </div>
+                        <div class="metric-value">12+</div>
+                    </div>
+                    
+                    <div class="premium-card github-metric-card glass-panel">
+                        <div class="metric-top">
+                            <i class="fas fa-fire metric-icon text-orange"></i>
+                            <h4>Longest Streak</h4>
+                        </div>
+                        <div class="metric-value">18 Days</div>
+                    </div>
+
+                    <div class="premium-card github-languages-card glass-panel">
+                        <h4>Top Technologies</h4>
+                        <div class="lang-distribution">
+                            <div class="lang-bar-total">
+                                <div class="lang-fill fill-js" style="width: 55%" title="JavaScript 55%"></div>
+                                <div class="lang-fill fill-ts" style="width: 25%" title="TypeScript 25%"></div>
+                                <div class="lang-fill fill-html" style="width: 15%" title="HTML/CSS 15%"></div>
+                                <div class="lang-fill fill-py" style="width: 5%" title="Python 5%"></div>
+                            </div>
+                            <div class="lang-legend-grid">
+                                <span><span class="color-dot js-dot"></span> JS (55%)</span>
+                                <span><span class="color-dot ts-dot"></span> TS (25%)</span>
+                                <span><span class="color-dot html-dot"></span> HTML/CSS (15%)</span>
+                                <span><span class="color-dot py-dot"></span> Python (5%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             CERTIFICATES & ACHIEVEMENTS SECTION
+             ========================================== -->
+        <section id="certificates" class="section cert-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Milestones</span>
+                <h2 class="section-heading">Certificates & <span class="gradient-text">Achievements</span></h2>
+                <p class="section-desc">Continuous learning tokens, awards, and technical recognitions.</p>
+            </div>
+
+            <div class="grid-container certificates-grid animate-on-scroll">
+                <!-- Cert 1 -->
+                <div class="premium-card cert-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="cert-icon-top"><i class="fas fa-certificate"></i></div>
+                    <h3 class="cert-name">MEAN Stack Web Development Certification</h3>
+                    <p class="cert-issuer">Udemy / Web Academy</p>
+                    <div class="cert-meta">
+                        <span>Issued: Jan 2024</span>
+                        <a href="https://github.com/Ommii98" target="_blank" class="cert-verify-link">Verify <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="premium-card cert-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="cert-icon-top"><i class="fas fa-award"></i></div>
+                    <h3 class="cert-name">Advanced Angular Applications Course</h3>
+                    <p class="cert-issuer">Frontend Architect Alliance</p>
+                    <div class="cert-meta">
+                        <span>Issued: Nov 2023</span>
+                        <a href="https://github.com/Ommii98" target="_blank" class="cert-verify-link">Verify <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="premium-card cert-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="cert-icon-top"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="cert-name">Introduction to Cybersecurity & Networks</h3>
+                    <p class="cert-issuer">IIIT Manipur Core Module</p>
+                    <div class="cert-meta">
+                        <span>Issued: May 2023</span>
+                        <span class="cert-verify-link text-muted">Academic Module</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="achievements-timeline-wrapper animate-on-scroll">
+                <div class="premium-card achievements-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <h3><i class="fas fa-trophy"></i> Key Achievements</h3>
+                    <ul class="achievements-list">
+                        <li>
+                            <div class="ach-icon"><i class="fas fa-star"></i></div>
+                            <div class="ach-content">
+                                <strong>Open Source Contributor</strong>
+                                <p>Committed improvements and documentation fixes on various JS utility repositories on GitHub.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ach-icon"><i class="fas fa-fire"></i></div>
+                            <div class="ach-content">
+                                <strong>Hackathon Finalist</strong>
+                                <p>Designed and presented a medical response database prototype during a college tech fest sprint.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ach-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="ach-content">
+                                <strong>Web Architecture Speaker</strong>
+                                <p>Presented a talk on "State Management Optimization in Modern Angular Apps" at IIIT Manipur Coding Club.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             RESUME SECTION
+             ========================================== -->
+        <section id="resume" class="section resume-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Credentials</span>
+                <h2 class="section-heading">My <span class="gradient-text">Resume</span></h2>
+                <p class="section-desc">Preview, download, or print my complete professional resume.</p>
+            </div>
+
+            <div class="resume-wrapper animate-on-scroll">
+                <div class="premium-card resume-panel-card glass-panel">
+                    <div class="resume-toolbar">
+                        <div class="resume-meta-info">
+                            <span><i class="fas fa-sync-alt"></i> Last Updated: July 2026</span>
+                            <span>Version: 2.1.0</span>
+                        </div>
+                        <div class="resume-actions-group">
+                            <button class="btn btn-outline btn-sm" id="btn-print-resume"><i class="fas fa-print"></i> Print</button>
+                            <a href="https://github.com/Ommii98" target="_blank" download class="btn btn-primary btn-sm" id="btn-download-resume"><i class="fas fa-download"></i> Download PDF</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulated Interactive Resume Preview Sheet -->
+                    <div class="resume-sheet-preview" id="resume-preview-sheet">
+                        <div class="sheet-header">
+                            <h2>Hariom Vishwakarma</h2>
+                            <p class="role-sub">Full Stack Developer — B.Tech ECE (VLSI) — IIIT Manipur</p>
+                            <p class="contact-details-line">
+                                <i class="fas fa-envelope"></i> hariomvishwakarma8076@gmail.com &nbsp;|&nbsp;
+                                <i class="fab fa-linkedin"></i> linkedin.com/in/hariom-vishwakarma-992a16257 &nbsp;|&nbsp;
+                                <i class="fas fa-phone-alt"></i> +91 8076381345
+                            </p>
+                        </div>
+                        <div class="sheet-divider"></div>
+                        
+                        <div class="sheet-section">
+                            <h3>Professional Summary</h3>
+                            <p>Full Stack Developer skilled in Angular, React.js, Node.js, Express.js, MongoDB, MySQL, and REST APIs with experience in scalable web application development, backend optimization, JWT authentication, and cloud deployment. Improved API efficiency and application performance through optimized backend architecture and responsive frontend implementation using AWS and Docker.</p>
+                        </div>
+
+                        <div class="sheet-body-grid">
+                            <div class="sheet-main-col">
+                                <div class="sheet-section">
+                                    <h3>Education</h3>
+                                    <div class="sheet-edu-item">
+                                        <h4>Indian Institute of Information Technology, Manipur</h4>
+                                        <p class="sheet-place">B.Tech in Electronics and Communication Engineering (VLSI) (2022 – 2026)</p>
+                                    </div>
+                                </div>
+
+                                <div class="sheet-section">
+                                    <h3>Experience</h3>
+                                    <div class="sheet-project-item">
+                                        <h4>Intern - Full Stack Developer</h4>
+                                        <p class="sheet-place">PSS Automate Private Limited, Hyderabad (Dec 2025 – April 2026)</p>
+                                        <ul style="padding-left: 15px; margin-top: 5px; font-size: 0.78rem;">
+                                            <li>Contributed to real-time software development by building scalable full-stack features, improving overall system efficiency by 15%.</li>
+                                            <li>Collaborated with senior professionals to integrate new technologies and optimize existing codebases, reducing application load time by 20%.</li>
+                                            <li>Proactively managed and delivered assigned project modules 10% faster than the projected timeline, demonstrating strong adaptability and a collaborative approach.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="sheet-section">
+                                    <h3>Projects</h3>
+                                    <div class="sheet-project-item">
+                                        <h4>Full Stack Appointment Booking System (2024)</h4>
+                                        <p style="font-size: 0.78rem;">Developed a scalable appointment booking platform with three-level authentication for Patients, Doctors, and Admins, improving operational efficiency by nearly 35%. Implemented secure JWT authentication, optimized backend APIs, and reduced average response time by approximately 25%. Containerized backend services using Docker and explored AWS deployment workflows for scalable deployment management.</p>
+                                    </div>
+                                    <div class="sheet-project-item">
+                                        <h4>MERN Stack E-Commerce Platform (2024)</h4>
+                                        <p style="font-size: 0.78rem;">Developed a complete MERN stack e-commerce platform with scalable backend architecture and responsive frontend design. Built dynamic modules for product catalog, shopping cart, and order management, improving customer interaction efficiency by over 25%. Integrated secure authentication, Docker workflows, and cloud deployment practices, reducing page load time and improving application performance by nearly 20%.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="sheet-sidebar-col">
+                                <div class="sheet-section">
+                                    <h3>Technical Skills</h3>
+                                    <p style="font-size: 0.78rem; line-height: 1.4;">
+                                        <strong>Languages:</strong> JavaScript, TypeScript, Python, SQL, HTML, CSS, C++<br><br>
+                                        <strong>Frontend:</strong> Angular, React.js, Bootstrap, Responsive UI<br><br>
+                                        <strong>Backend:</strong> Node.js, Express.js, REST APIs<br><br>
+                                        <strong>Databases:</strong> MongoDB, MySQL<br><br>
+                                        <strong>Cloud/DevOps:</strong> AWS, Docker, Git, GitHub<br><br>
+                                        <strong>Tools:</strong> VS Code, Postman, npm<br><br>
+                                        <strong>Concepts:</strong> JWT Auth, MVC Architecture, API Integration<br><br>
+                                        <strong>Soft Skills:</strong> Communication, Teamwork, Adaptability
+                                    </p>
+                                </div>
+                                
+                                <div class="sheet-section">
+                                    <h3>Achievements</h3>
+                                    <ul style="padding-left: 12px; font-size: 0.75rem; line-height: 1.4;">
+                                        <li>Completed certifications in Web Development, React.js, MERN Stack, and Full Stack Development.</li>
+                                        <li>Contributed to open-source projects on GitHub through feature enhancement.</li>
+                                        <li>Built and deployed multiple Full Stack applications.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             BLOG SECTION
+             ========================================== -->
+        <section id="blog" class="section blog-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Insights</span>
+                <h2 class="section-heading">Latest <span class="gradient-text">Articles</span></h2>
+                <p class="section-desc">My technical publications, development guides, and software engineering articles.</p>
+            </div>
+
+            <div class="grid-container blog-grid animate-on-scroll">
+                <!-- Article 1 -->
+                <article class="premium-card blog-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-gradient-back bg-gradient-orange"></div>
+                        <i class="fab fa-angular blog-decor-icon"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                        <h3 class="blog-card-title">Optimizing State Management in Angular 17+</h3>
+                        <p class="blog-card-excerpt">Explore the details of Signal mechanics in modern Angular architectures and how to bypass RxJS bloat in simple client states.</p>
+                        <div class="blog-card-footer">
+                            <span class="blog-tag">Angular</span>
+                            <a href="https://github.com/Ommii98" target="_blank" class="blog-read-more">Read Article <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="premium-card blog-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-gradient-back bg-gradient-indigo"></div>
+                        <i class="fab fa-react blog-decor-icon"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                        <h3 class="blog-card-title">Building Responsive Node.js Microservices</h3>
+                        <p class="blog-card-excerpt">A comprehensive architectural guide on setting up token authentications, secure REST APIs, and database guards with Express.</p>
+                        <div class="blog-card-footer">
+                            <span class="blog-tag">Node.js</span>
+                            <a href="https://github.com/Ommii98" target="_blank" class="blog-read-more">Read Article <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="premium-card blog-card glass-panel">
+                    <div class="spotlight-layer"></div>
+                    <div class="blog-card-img-wrapper">
+                        <div class="blog-gradient-back bg-gradient-green"></div>
+                        <i class="fas fa-database blog-decor-icon"></i>
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                        <h3 class="blog-card-title">MongoDB Indexing Best Practices for Beginners</h3>
+                        <p class="blog-card-excerpt">How to analyze search times in MongoDB collections and map index fields properly to speed up client-facing application lookups.</p>
+                        <div class="blog-card-footer">
+                            <span class="blog-tag">Database</span>
+                            <a href="https://github.com/Ommii98" target="_blank" class="blog-read-more">Read Article <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TESTIMONIALS SECTION
+             ========================================== -->
+        <section class="section testimonials-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Reviews</span>
+                <h2 class="section-heading">Client <span class="gradient-text">Testimonials</span></h2>
+                <p class="section-desc">Feedback from peers, project stakeholders, and collaborative teammates.</p>
+            </div>
+
+            <!-- Carousel Wrapper -->
+            <div class="testimonials-carousel-container animate-on-scroll">
+                <div class="testimonials-carousel" id="testimonials-slider">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide active">
+                        <div class="premium-card testimonial-card glass-panel">
+                            <div class="spotlight-layer"></div>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Hariom developed our appointment manager portal on React and Node.js. His understanding of full-stack data security, clean routing, and interactive form dashboards exceeded our expectations. An extremely talented engineer."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-meta">
+                                    <h4>Dr. S. K. Roy</h4>
+                                    <span>Medical Project Sponsor / Contributor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="premium-card testimonial-card glass-panel">
+                            <div class="spotlight-layer"></div>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"The MEAN stack E-Commerce platform build is highly optimized. Hariom is prompt, keeps layout responsiveness a priority, and writes highly maintainable component code. I look forward to working with him again."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+                                <div class="author-meta">
+                                    <h4>Rajesh Vishwakarma</h4>
+                                    <span>Engineering Lead / Software Architect</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-navigation">
+                    <button class="nav-arrow-btn prev-btn" id="prev-test-btn" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots" id="carousel-dots-wrapper">
+                        <span class="carousel-dot active" data-index="0"></span>
+                        <span class="carousel-dot" data-index="1"></span>
+                    </div>
+                    <button class="nav-arrow-btn next-btn" id="next-test-btn" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             CONTACT SECTION
+             ========================================== -->
+        <section id="contact" class="section contact-sec">
+            <div class="section-title-wrapper text-center animate-on-scroll">
+                <span class="section-tag">Reach Out</span>
+                <h2 class="section-heading">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="section-desc">Drop me a message to collaborate on open-source, full-stack client apps, or full-time roles.</p>
+            </div>
+
+            <div class="grid-container contact-grid">
+                <!-- Message Form Card -->
+                <div class="premium-card form-card-wrapper glass-panel animate-on-scroll">
+                    <div class="spotlight-layer"></div>
+                    <h3>Send a Direct Message</h3>
+                    
+                    <form id="contact-form" class="premium-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-element">
+                                <label for="name">Your Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" id="name" name="name" placeholder="John Doe" required aria-required="true">
+                                </div>
+                                <span class="error-msg" id="name-error">Please enter your name.</span>
+                            </div>
+                            
+                            <div class="form-element">
+                                <label for="email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-envelope input-icon"></i>
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" required aria-required="true">
+                                </div>
+                                <span class="error-msg" id="email-error">Please enter a valid email address.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-element">
+                            <label for="message">Your Message</label>
+                            <div class="input-wrapper align-start">
+                                <i class="fas fa-comment-alt input-icon mt-1"></i>
+                                <textarea id="message" name="message" rows="6" placeholder="Hi Hariom, I'd love to chat about a new project..." required aria-required="true"></textarea>
+                            </div>
+                            <span class="error-msg" id="message-error">Please enter a message.</span>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn btn-glow btn-full">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    
+                    <p class="form-footer-note">
+                        Or email directly: <button class="copy-email-btn" id="copy-email-btn" title="Copy email address to clipboard">hariomvishwakarma8076@gmail.com <i class="far fa-copy"></i></button>
+                    </p>
+                </div>
+
+                <!-- Info Cards / Availability details -->
+                <div class="contact-info-panel animate-on-scroll">
+                    <!-- Availability Card -->
+                    <div class="premium-card info-item-card glass-panel">
+                        <div class="spotlight-layer"></div>
+                        <div class="info-card-top">
+                            <div class="info-card-icon"><i class="fas fa-info-circle"></i></div>
+                            <div>
+                                <h4>Availability</h4>
+                                <p class="text-green"><span class="badge-dot pulse"></span> Open to new opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="premium-card info-item-card glass-panel">
+                        <div class="spotlight-layer"></div>
+                        <div class="contact-methods">
+                            <div class="contact-method-item">
+                                <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="method-details">
+                                    <h4>Location</h4>
+                                    <p>Jaunpur, Uttar Pradesh, India</p>
+                                </div>
+                            </div>
+                            <div class="contact-method-item">
+                                <div class="method-icon"><i class="fas fa-phone-alt"></i></div>
+                                <div class="method-details">
+                                    <h4>Phone / vCard</h4>
+                                    <p>
+                                        +91 8076381345 &nbsp;
+                                        <button class="vcard-btn-inline" id="btn-vcard-download" title="Download Contact Card (vCard)"><i class="fas fa-address-card"></i> Download vCard</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="contact-method-item">
+                                <div class="method-icon"><i class="fas fa-clock"></i></div>
+                                <div class="method-details">
+                                    <h4>Average Response Time</h4>
+                                    <p>&lt; 12 Hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simulated/Interactive Custom SVG Vector Map Grid -->
+                    <div class="premium-card contact-map-card glass-panel">
+                        <div class="spotlight-layer"></div>
+                        <div class="map-vector-overlay">
+                            <div class="map-target-ping"></div>
+                            <span>Jaunpur, UP, India</span>
+                        </div>
+                        <!-- Beautiful stylized grid representing geographic grid elements -->
+                        <div class="simulated-map-grid">
+                            <div class="map-wave-circle"></div>
+                            <div class="map-wave-circle delay-1"></div>
+                            <div class="map-wave-circle delay-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             FOOTER SECTION
+             ========================================== -->
+        <footer class="footer-wrapper">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                        <span class="logo-text">Hariom<span class="highlight">.V</span></span>
+                    </div>
+                    <nav class="footer-nav" aria-label="Footer Navigation Links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#github">GitHub</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-middle">
+                    <div class="footer-social-links">
+                        <a href="https://github.com/Ommii98" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/hariom-vishwakarma-992a16257" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/HariomVish03" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:hariomvishwakarma8076@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p class="copyright-txt">&copy; 2026 Hariom Vishwakarma. All Rights Reserved. Built with ❤️ and Pure HTML/CSS/JS.</p>
+                    <button class="back-to-top-text" id="back-to-top-btn" aria-label="Back to top of page">Back to Top <i class="fas fa-chevron-up"></i></button>
+                </div>
+            </div>
         </footer>
 
     </main>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-        <i class="toast-icon fas fa-check-circle"></i>
-        <span id="toast-msg">Message sent!</span>
+    <!-- ==========================================
+         COMMAND PALETTE MODAL
+         ========================================== -->
+    <div class="cmd-palette-wrapper" id="cmd-palette" role="dialog" aria-modal="true" aria-label="Command Palette">
+        <div class="cmd-palette-modal glass-panel">
+            <div class="cmd-palette-header">
+                <i class="fas fa-search cmd-search-icon"></i>
+                <input type="text" id="cmd-search-input" placeholder="Search portfolio sections, skills, or projects..." autocomplete="off" aria-label="Command Palette search">
+                <span class="cmd-close-kbd">ESC</span>
+            </div>
+            
+            <div class="cmd-palette-body">
+                <div class="cmd-palette-list" id="cmd-palette-results" role="listbox">
+                    <!-- Results injected in JavaScript -->
+                </div>
+            </div>
+            
+            <div class="cmd-palette-footer">
+                <span><kbd>↑↓</kbd> to navigate</span>
+                <span><kbd>Enter</kbd> to select</span>
+                <span><kbd>Esc</kbd> to exit</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Mobile Search Overlay -->
-    <div class="mobile-search-overlay" id="mobile-search-overlay">
-        <div class="mobile-search-header">
-            <i class="fas fa-search"></i>
-            <input type="text" id="mobile-search-input" placeholder="Search sections..." autocomplete="off">
-            <button class="mobile-search-close" id="mobile-search-close" title="Close"><i class="fas fa-times"></i></button>
+    <!-- ==========================================
+         CASE STUDY DETAILS MODAL
+         ========================================== -->
+    <div class="case-study-modal" id="case-study-modal" role="dialog" aria-modal="true" aria-label="Project Case Study">
+        <div class="case-modal-overlay" id="case-modal-overlay"></div>
+        <div class="case-modal-content glass-panel">
+            <button class="close-case-btn" id="close-case-modal" aria-label="Close Case Study">&times;</button>
+            <div class="case-modal-body" id="case-study-details">
+                <!-- JS Injected Case Study Content -->
+            </div>
         </div>
-        <div class="mobile-search-results" id="mobile-search-results"></div>
     </div>
+
+    <!-- Toast Notification Wrapper -->
+    <div class="toast-notification-container" id="toast-container" aria-live="polite"></div>
 
     <script src="script.js"></script>
-
-
-
 </body>
 </html>

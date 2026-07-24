@@ -1,0 +1,6 @@
+# robots.txt for Hariom Vishwakarma Portfolio
+User-agent: *
+Allow: /
+Disallow: /assets/private/
+
+Sitemap: https://github.com/Ommii98/sitemap.xml
